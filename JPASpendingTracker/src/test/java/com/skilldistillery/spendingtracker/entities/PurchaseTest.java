@@ -13,11 +13,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class TransactionTest {
+class PurchaseTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Transaction transaction;
+	private Purchase purchase;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,19 +32,19 @@ class TransactionTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		transaction = em.find(Transaction.class, 1);
+		purchase = em.find(Purchase.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		transaction = null;
+		purchase = null;
 	}
 
 	@Test
 	void test() {
-		assertNotNull(transaction);
-		assertEquals("groceries", transaction.getName());
+		assertNotNull(purchase);
+		assertEquals("groceries", purchase.getName());
 	}
 
 }

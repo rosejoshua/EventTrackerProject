@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Transaction {
+public class Purchase {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +14,7 @@ public class Transaction {
 	
 	private String name;
 
-	public Transaction() {}
+	public Purchase() {}
 
 	public int getId() {
 		return id;
@@ -48,7 +48,7 @@ public class Transaction {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Transaction other = (Transaction) obj;
+		Purchase other = (Purchase) obj;
 		if (id != other.id)
 			return false;
 		return true;
@@ -57,7 +57,7 @@ public class Transaction {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Transaction [id=").append(id).append(", name=").append(name).append("]");
+		builder.append("Purchase [id=").append(id).append(", name=").append(name).append("]");
 		return builder.toString();
 	}
 	

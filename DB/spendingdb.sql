@@ -16,11 +16,11 @@ CREATE SCHEMA IF NOT EXISTS `spendingdb` DEFAULT CHARACTER SET utf8 ;
 USE `spendingdb` ;
 
 -- -----------------------------------------------------
--- Table `transaction`
+-- Table `purchase`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `transaction` ;
+DROP TABLE IF EXISTS `purchase` ;
 
-CREATE TABLE IF NOT EXISTS `transaction` (
+CREATE TABLE IF NOT EXISTS `purchase` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
@@ -38,12 +38,12 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `transaction`
+-- Data for table `purchase`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `spendingdb`;
-INSERT INTO `transaction` (`id`, `name`) VALUES (1, 'groceries');
-INSERT INTO `transaction` (`id`, `name`) VALUES (2, 'gas');
+INSERT INTO `purchase` (`id`, `name`) VALUES (1, 'groceries');
+INSERT INTO `purchase` (`id`, `name`) VALUES (2, 'gas');
 
 COMMIT;
 

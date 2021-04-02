@@ -7,23 +7,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.spendingtracker.entities.Transaction;
-import com.skilldistillery.spendingtracker.services.TransactionService;
+import com.skilldistillery.spendingtracker.entities.Purchase;
+import com.skilldistillery.spendingtracker.services.PurchaseService;
 
 @RequestMapping("api")
 @RestController
-public class TransactionController {
+public class PurchaseController {
 	
 	@Autowired
-	private TransactionService svc;
+	private PurchaseService svc;
 	
 	@GetMapping("ping")
 	public String ping() {
 		return "pong";
 	}
 	
-	@GetMapping("transactions")
-	public List<Transaction> listAll() {
+	@GetMapping("purchases")
+	public List<Purchase> listAll() {
 		return svc.allTransactions();
 	}
 
