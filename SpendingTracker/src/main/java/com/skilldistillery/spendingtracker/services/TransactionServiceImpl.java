@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.spendingtracker.entities.Transaction;
@@ -13,12 +14,12 @@ import com.skilldistillery.spendingtracker.repositories.SpendingRepository;
 @Transactional
 public class TransactionServiceImpl implements TransactionService {
 	
+	@Autowired
 	private SpendingRepository repo;
 
 	@Override
 	public List<Transaction> allTransactions() {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.findAll();
 	}
 
 	@Override
