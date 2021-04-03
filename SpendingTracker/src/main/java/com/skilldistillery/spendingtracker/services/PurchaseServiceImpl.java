@@ -31,7 +31,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	public List<Purchase> allPurchasesByCategory(Integer categoryId) {
 		List<Purchase> results = new ArrayList<>();
 		for (Purchase purchase : purchRepo.findAll()) {
-			if(purchase.getCategory().getId()==categoryId) {
+			if(purchase.getCategory().getId()==categoryId.intValue()) {
 				results.add(purchase);
 			}
 		}
@@ -64,12 +64,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 	
 	//TODO: **************CHECK USER OWNERSHIP HERE ONCE SESSIONS ARE IMPLIMENTED**************
 	@Override
-	public Purchase updatePurchase(Integer categoryId, Purchase purchase) {
+	public Purchase updatePurchase(Integer categoryId, Integer purchaseId, Purchase purchase) {
 		
 		Optional<Category> categoryOptional = catRepo.findById(categoryId);
 		Optional<Purchase> purchaseOptional = purchRepo.findById(purchase.getId());
 		
-		if (categoryOptional.isPresent() && purchaseOptional.isPresent()) {
+		if (categoryOptional.isPresent() && purchaseOptional.isPresent() && purchaseOptional.get().getId()==purchaseId.intValue()) {
 			purchase.setCategory(categoryOptional.get());
 			purchRepo.saveAndFlush(purchase);
 		}

@@ -14,7 +14,7 @@ public interface PurchaseService {
 
 	Purchase createPurchase(Integer categoryId, Purchase purchase);
 	
-	Purchase updatePurchase(Integer categoryId, Purchase purchase);
+	Purchase updatePurchase(Integer categoryId, Integer purchaseId, Purchase purchase);
 	
 	boolean deletePurchase(Integer purchaseId);
 }
