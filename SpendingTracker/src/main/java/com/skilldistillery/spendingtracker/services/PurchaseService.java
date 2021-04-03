@@ -8,6 +8,13 @@ public interface PurchaseService {
 	
 	List<Purchase> allPurchases();
 	
+	List<Purchase> allPurchasesByCategory(Integer categoryId);
+
 	Purchase retrievePurchase(int purchaseId);
 
+	Purchase createPurchase(Integer categoryId, Purchase purchase);
+	
+	Purchase updatePurchase(Integer categoryId, Purchase purchase);
+	
+	boolean deletePurchase(Integer purchaseId);
 }
