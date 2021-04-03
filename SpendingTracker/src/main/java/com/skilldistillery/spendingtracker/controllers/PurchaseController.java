@@ -24,7 +24,7 @@ public class PurchaseController {
 	
 	@GetMapping("purchases")
 	public List<Purchase> listAll() {
-		return svc.allTransactions();
+		return svc.allPurchases();
 	}
 
 }

@@ -6,8 +6,8 @@ import com.skilldistillery.spendingtracker.entities.Purchase;
 
 public interface PurchaseService {
 	
-	List<Purchase> allTransactions();
+	List<Purchase> allPurchases();
 	
-	Purchase retrieveTransaction(int transactionId);
+	Purchase retrievePurchase(int purchaseId);
 
 }

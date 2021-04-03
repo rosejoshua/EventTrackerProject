@@ -2,6 +2,7 @@ package com.skilldistillery.spendingtracker.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,11 +15,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class PurchaseTest {
+class CategoryTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Purchase purchase;
+	private Category category;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -33,34 +34,32 @@ class PurchaseTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		purchase = em.find(Purchase.class, 1);
+		category = em.find(Category.class, 8);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		purchase = null;
+		category = null;
 	}
 
 	@Test
-	@DisplayName("test purchase entity getNotes")
+	@DisplayName("test category entity getname")
 	void test() {
-		assertNotNull(purchase);
-		assertEquals("groceries", purchase.getNotes());
+		assertNotNull(category);
+		assertEquals("Utilities, Essential", category.getName());
 	}
 
 	@Test
-	@DisplayName("test purchase entity getTimeStamp")
+	@DisplayName("test purchase entity get Purchaseses object")
 	void test2() {
-		assertNotNull(purchase.getDatetime());
+		assertTrue(category.getPurchases().size()>0);
 	}
 
 	@Test
-	@DisplayName("test mapping ManyToOne purchase to category")
+	@DisplayName("test mapping OneToMany category to purchase full step thru")
 	void test3() {
-		assertNotNull(purchase.getCategory());
-		assertEquals("Groceries Essential", purchase.getCategory().getName());
-		assertNotNull(purchase.getCategory().getPurchases());
+		assertEquals("Utilities, Essential", category.getPurchases().get(0).getCategory().getName());
 	}
 
 }

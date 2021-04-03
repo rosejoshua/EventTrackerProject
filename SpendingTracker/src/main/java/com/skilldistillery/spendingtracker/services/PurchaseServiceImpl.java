@@ -18,12 +18,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 	private SpendingRepository repo;
 
 	@Override
-	public List<Purchase> allTransactions() {
+	public List<Purchase> allPurchases() {
 		return repo.findAll();
 	}
 
 	@Override
-	public Purchase retrieveTransaction(int transactionId) {
+	public Purchase retrievePurchase(int purchaseId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

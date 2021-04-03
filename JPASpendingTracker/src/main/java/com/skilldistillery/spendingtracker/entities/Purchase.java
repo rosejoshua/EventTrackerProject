@@ -1,9 +1,13 @@
 package com.skilldistillery.spendingtracker.entities;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Purchase {
@@ -12,9 +16,26 @@ public class Purchase {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String name;
+	private double amount;
+	
+	private LocalDateTime datetime;
+	
+	private String notes;
+	
+	@ManyToOne
+	@JoinColumn(name="category_id")
+	private Category category;
 
 	public Purchase() {}
+	
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 
 	public int getId() {
 		return id;
@@ -22,14 +43,35 @@ public class Purchase {
 
 	public void setId(int id) {
 		this.id = id;
+		
 	}
 
-	public String getName() {
-		return name;
+	public double getAmount() {
+		return amount;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+
+	public LocalDateTime getDatetime() {
+		return datetime;
+	}
+
+
+	public void setDatetime(LocalDateTime datetime) {
+		this.datetime = datetime;
+	}
+
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
 	}
 
 	@Override
@@ -57,7 +99,8 @@ public class Purchase {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Purchase [id=").append(id).append(", name=").append(name).append("]");
+		builder.append("Purchase [id=").append(id).append(", notes=").append(notes).append(", category=")
+				.append(category).append("]");
 		return builder.toString();
 	}
 	

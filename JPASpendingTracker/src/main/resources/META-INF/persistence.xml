@@ -9,7 +9,8 @@
     </provider>
     
     <!-- ENTITIES start -->
-    <class>com.skilldistillery.spendingtracker.entities.Transaction</class>
+    <class>com.skilldistillery.spendingtracker.entities.Purchase</class>
+    <class>com.skilldistillery.spendingtracker.entities.Category</class>
     <!-- ENTITIES end -->
 
     <properties>
