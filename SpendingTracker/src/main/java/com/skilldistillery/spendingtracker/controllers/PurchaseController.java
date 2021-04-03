@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -58,6 +59,7 @@ public class PurchaseController {
 		return purchase;
 	}
 
+	//TODO: **************ADD SESSION ID AND PURCHASE ID LATER**************
 	@PutMapping("purchase/{purchaseId}")
 	public Purchase updatePurchase(@PathVariable Integer purchaseId, @RequestBody Purchase purchase, 
 			HttpServletResponse resp) {
@@ -74,6 +76,24 @@ public class PurchaseController {
 		}
 		
 		return purchase;
+	}
+	
+	//TODO: **************ADD SESSION ID AND PURCHASE ID LATER**************
+	@DeleteMapping("purchase/{purchaseId}")
+	public void deletePurchase(@PathVariable Integer purchaseId, HttpServletResponse resp) {
+		
+		try {
+			if(svc.deletePurchase(purchaseId)) {
+				resp.setStatus(204);
+			}
+			else {
+				resp.setStatus(404);
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+			resp.setStatus(400);
+		}
+		
 	}
 
 	@GetMapping("purchases/{categoryId}")
