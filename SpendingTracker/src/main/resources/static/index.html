@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SpendingTracker</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <h1 style = "margin-left: auto; margin-right: auto; text-align: center;">Welcome to Free Finance Tracker</h1>
+
+    <table id="mainTable" name='mainTable' style="width:max-content; border:1px; border-style: solid; border-radius: 5px; margin-left: auto; margin-right: auto;">
+        <tr id='tableHeader'>
+          <th>Cost</th>
+          <th>Category</th>
+          <th>Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th> 
+          <th>Controls</th> 
+        </tr>
+        <tr id="formRow">
+            <form action="purchaseForm" name='purchaseForm'>
+                <td><input style="max-width:80px" type="number" name="cost" id="cost" required></td>
+                <td><select name="category" id="category" required>
+                    <option value="1">Groceries</option>
+                    <option value="2">In-Restaurant Food and Drink</option>
+                    <option value="3">Booze and Inhalable Herbs</option>
+                    <option value="4">Transportation Essential</option>
+                    <option value="5">Transportation Non-Essential</option>
+                    <option value="6">Restaurant Takeout/Delivery</option>
+                    <option value="7">Rent/Mortage/Home Repairs</option>
+                    <option value="8">Utilities, Essential</option>
+                    <option value="9">Subscriptions, Non-Essential</option>
+                    <option value="10">Clothing, Essential</option>
+                    <option value="11">Clothing, Discretionary</option>
+                    <option value="12">Electronics, Discretionary</option>
+                    <option value="13">Misc, Essential</option>
+                    <option value="14">Misc, Discretionary</option>
+                    <option value="15">Pet Costs, Essential</option>
+                    <option value="16">Pet Costs, Discretionary</option>
+                    <option value="17">Household Products, Essential</option>
+                </select></td>
+                <td><input style="min-width:200px" type="text" name="notes" id="notes"></td>
+                <td><button name ='submit' type="submit" id="submit">Save</button></td>
+            </form>
+        </tr>
+      </table>
+
+
+</body>
+</html>

@@ -26,7 +26,9 @@ public class Purchase {
 	@JoinColumn(name="category_id")
 	private Category category;
 
-	public Purchase() {}
+	public Purchase() {		
+		this.datetime = LocalDateTime.now();
+	}
 	
 
 	public Category getCategory() {

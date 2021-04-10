@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `purchase` (
 ENGINE = InnoDB;
 
 SET SQL_MODE = '';
-DROP USER IF EXISTS spendinguser@localhost;
+-- DROP USER IF EXISTS spendinguser@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 CREATE USER 'spendinguser'@'localhost' IDENTIFIED BY 'spendinguser';
 
@@ -111,4 +111,3 @@ INSERT INTO `purchase` (`id`, `amount`, `notes`, `category_id`, `datetime`) VALU
 INSERT INTO `purchase` (`id`, `amount`, `notes`, `category_id`, `datetime`) VALUES (19, 34.99, 'Oil change', 4, '2014-05-26 23:22:55');
 
 COMMIT;
-
