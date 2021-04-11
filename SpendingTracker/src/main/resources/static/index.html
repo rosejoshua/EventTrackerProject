@@ -14,11 +14,10 @@
         <tr id='tableHeader'>
           <th>Cost</th>
           <th>Category</th>
-          <th>Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th> 
-          <th>Controls</th> 
+          <th colspan="2">Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th> 
         </tr>
         <tr id="formRow">
-            <form action="purchaseForm" name='purchaseForm'>
+            <form action="purchaseForm" name='purchaseForm' id="purchaseForm">
                 <td><input style="max-width:80px" type="number" name="cost" id="cost" required></td>
                 <td><select name="category" id="category" required>
                     <option value="1">Groceries</option>
@@ -39,8 +38,8 @@
                     <option value="16">Pet Costs, Discretionary</option>
                     <option value="17">Household Products, Essential</option>
                 </select></td>
-                <td><input style="min-width:200px" type="text" name="notes" id="notes"></td>
-                <td><button name ='submit' type="submit" id="submit">Save</button></td>
+                <td><input style="min-width:160px" type="text" name="notes" id="notes"></td>
+                <td><input name='submit' value='Add' type="button" id="submit"></td>
             </form>
         </tr>
       </table>
