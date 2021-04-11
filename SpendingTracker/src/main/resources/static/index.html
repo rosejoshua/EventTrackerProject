@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/script.js"></script>
 </head>
-<body>
+<body id='body'>
     <h1 style = "margin-left: auto; margin-right: auto; text-align: center;">Welcome to Free Finance Tracker</h1>
 
     <table id="mainTable" name='mainTable' style="width:max-content; border:1px; border-style: solid; border-radius: 5px; margin-left: auto; margin-right: auto;">
@@ -17,7 +17,7 @@
           <th colspan="2">Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th> 
         </tr>
         <tr id="formRow">
-            <form action="purchaseForm" name='purchaseForm' id="purchaseForm">
+            <form name='purchaseForm' id="purchaseForm">
                 <td><input style="max-width:80px" type="number" name="cost" id="cost" required></td>
                 <td><select name="category" id="category" required>
                     <option value="1">Groceries</option>

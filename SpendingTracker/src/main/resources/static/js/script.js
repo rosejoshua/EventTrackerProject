@@ -4,8 +4,8 @@ window.addEventListener('load', function(evt){
 });
 
 function init() {
-    getAllPurchases();
     document.purchaseForm.submit.addEventListener('click', createPurchase);
+    getAllPurchases();
 }
 
 function getAllPurchases() {
@@ -47,16 +47,21 @@ function getPurchase(purchaseId) {
 function displayError(msg) {
     var dataDiv = document.getElementById('mainTable');
     dataDiv.textContent = '';
-    let element = document.createElement('h3');
+    let element = document.createElement('agg1');
     element.textContent = msg;
     dataDiv.appendChild(element);
 }
 
 function displayPurchases(purchases) {
     let div = document.getElementById('mainTable');
-    //TODO: click event for detail view
+    let bodyElement = document.getElementById('body');
+
+    let totalPurchases = 0;
+
 
     for(const purchase of purchases) {
+        totalPurchases +=purchase.amount;
+
         let tr = document.createElement('tr');
         let cost = document.createElement('td');
         cost.textContent=purchase.amount;
@@ -78,7 +83,20 @@ function displayPurchases(purchases) {
             }
           });
     }
+
+    let agg1 = document.createElement('h3');
+    agg1.textContent = 'Total of all Purchases: ' + totalPurchases;
+    agg1.style = 'margin-left: auto; margin-right: auto; text-align: center';
+
+    bodyElement.appendChild(agg1);
     
+    let agg2 = document.createElement('h3');
+    agg2.textContent = 'Average purchase: ' + (totalPurchases/div.rows.length-2);
+    agg2.style = 'margin-left: auto; margin-right: auto; text-align: center';
+
+    bodyElement.appendChild(agg2);
+
+    console.log(div.rows.length-2);
 }
 
 function displayPurchase(purchase) {
@@ -93,6 +111,7 @@ function displayPurchase(purchase) {
     deleteButton.name='delete';
     deleteButton.value='Delete';
     deleteButton.id='delete';
+    deleteButton.confirm
 
     let deletetd = document.createElement('td');
     deletetd.appendChild(deleteButton);
@@ -112,6 +131,24 @@ function displayPurchase(purchase) {
     formElement.category.value=purchase.category.id;
     formElement.notes.value=purchase.notes;
     formElement.submit.value='Update';
+    
+    var editedPurchase = {
+        "id": purchase.id,
+        "amount": formElement.cost.value,
+        "datetime": purchase.datetime,
+        "notes": formElement.notes.value,
+        "category": {
+            "id": formElement.category.id.value
+        }
+    };
+
+    document.purchaseForm.submit.removeEventListener('click', createPurchase);    
+    document.purchaseForm.submit.addEventListener('click', function(event) {
+        event.preventDefault();
+        console.log(editedPurchase);
+        editPurchase(editedPurchase);
+      });
+    
 }
 
 function createPurchase(evt) {
@@ -130,14 +167,13 @@ function createPurchase(evt) {
 
 function deletePurchase(id) {
     console.log('delete pressed');
-    console.log(id);
 
     let xhr = new XMLHttpRequest();
     xhr.open('DELETE', `api/purchase/${id}`);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             console.log(xhr.status);
-          if (xhr.status === 204 || xhr.status === 202) {
+          if (xhr.status === 204 || xhr.status === 200) {
             console.log('success deleting purchase');
             window.location = "index.html";
           } else {
@@ -147,6 +183,24 @@ function deletePurchase(id) {
       };
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.send();
+}
+
+function editPurchase(purchase) {
+    console.log(purchase.textContent);
+    let xhr = new XMLHttpRequest();
+    xhr.open('PUT', `api/purchase/${purchase.id}`);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 204 || xhr.status === 200) {
+            console.log('success editing purchase');
+            window.location = "index.html";
+          } else {
+            displayError('Error editing purchase: ' + xhr.status);
+          }
+        }
+      };
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.send(JSON.stringify(purchase));
 }
 
 function postPurchase(purchase) {
