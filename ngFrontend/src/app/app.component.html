@@ -1,7 +1,14 @@
 
 <!-- navbar here i think, check examples online, also maybe class=header -->
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Spending Tracker</a>
+<nav class="navbar navbar-expand navbar-dark bg-dark paddinglr12">
+  <a class="navbar-brand text-success" [routerLink]="['/']">
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+      <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+    </svg>
+
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,14 +16,18 @@
   <div class="collapse navbar-collapse" id="navbarsExample02">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link text-primary" href="#">Charts<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+      <li class="nav-item active">
+        <a class="nav-link text-primary" href="#">Budget<span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link text-primary text-larger" href="#">About<span class="sr-only">(current)</span></a>
+      </li>
+
     </ul>
     <form class="form-inline my-2 my-md-0">
-      <input class="form-control" type="text" placeholder="Search">
+      <input class="btn logout text-light" type="button" value="Logout" placeholder="Search">
     </form>
   </div>
 </nav>
@@ -26,4 +37,10 @@
 <app-purchase-list>loading...</app-purchase-list>
 
 </main>
+
+<footer class="footer-fixed text-center bg-success">
+  <div class="container">
+    <span class="text-white">&#169; 2021 Joshua Rose</span>
+  </div>
+</footer>
 

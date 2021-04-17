@@ -13,9 +13,19 @@ export class PurchaseListComponent implements OnInit {
   //selected
   //newpurchase
 
+  showAdd: boolean = false;
+
   constructor(
     private PurchaseService: PurchaseService
   ) { }
+
+  showAddToggleTrue() {
+    this.showAdd = true;
+  }
+
+  showAddToggleFalse() {
+    this.showAdd = false;
+  }
 
   ngOnInit(): void {
 

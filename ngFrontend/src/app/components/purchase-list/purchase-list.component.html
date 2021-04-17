@@ -1,28 +1,54 @@
 <!-- Build table, detail view, header, edit/new forms -->
 
           <div class="table-responsive">
-            <table class="table table-striped table-sm">
+            <table class="table table-dark table-striped table-borderless table-hover nomargbottom">
               <thead>
-                <tr>
-                  <th colspan="5">
-                    <h3 class="text-center">Purchase History</h3>
+                <tr class="lgbackcolor">
+                  <th class="paddinglr12">
+                    <h3 class="tablelabel">Purchases</h3>
+                  </th>
+                  <th colspan="2" class="paddinglr12tb0">
+                    <button *ngIf='!showAdd' (click)="showAddToggleTrue()" class="btn btn-success float-right">Add</button>
+                    <button *ngIf='showAdd' (click)="addPurchase()" class="btn btn-success float-right">Submit</button>
+                    <button *ngIf='showAdd' (click)="showAddToggleFalse()" class="btn btn-warning float-right marginr12">Cancel</button>
                   </th>
                 </tr>
-                <tr>
+                <tr class="text-muted">
                   <th>Amount</th>
-                  <th>Notes</th>
+                  <th>Details</th>
                   <th>Category</th>
-                  <th></th>
-                  <th></th>
+                </tr>
+                <tr *ngIf='showAdd'>
+
+                    <th class="paddingtop0">
+                      <label class="sr-only" for="inlineFormInput">amount</label>
+                      <input type="text" class="form-control-sm mt-0 mb-0 shrinkwidth" id="inlineFormInput" placeholder="0.00">
+                    </th>
+
+                    <th class="paddingtop0">
+                      <label class="sr-only" for="inlineFormInput">notes</label>
+                      <input type="text" class="form-control-sm mt-0 mb-0 width75" id="inlineFormInput" placeholder="items...">
+                    </th>
+
+                    <th class="paddingtop0">
+
+                      <label class="sr-only" for="inlineFormCustomSelect">category</label>
+                      <select class="form-control form-control-sm width75" id="inlineFormCustomSelect">
+                        <option selected>Choose...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+
+                    </th>
+
                 </tr>
               </thead>
             <tbody>
               <tr *ngFor="let purchase of purchases">
-                <td>${{purchase.amount}}</td>
-                <td>{{purchase.notes}}</td>
-                <td>{{purchase.category.id}}: {{purchase.category.name}}</td>
-                <td>dolor</td>
-                <td>sit</td>
+                <td class="fontsherbert">${{purchase.amount}}</td>
+                <td class="text-warning">{{purchase.notes}}</td>
+                <td><a  class="text-info"[routerLink]="['/categories']">{{purchase.category.name}}</a></td>
               </tr>
             </tbody>
           </table>
